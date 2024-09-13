@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدعم والاتصال - شركة غرناطة</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            direction: rtl;
+            text-align: right;
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin: 0; /* إزالة الهوامش الافتراضية للجسم */
+        }
+        header {
+            background-color: #0f4c29;
+            padding: 10px;
+            color: white;
+            font-size: 24px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .welcome {
+            background-color: #e9f0eb; /* خلفية خضراء فاتحة */
+            color: #010d03; /* نص أسود */
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-size: 30px;
+            position: relative; /* لجعل الشعار في أقصى اليسار */
+        }
+        .welcome img {
+            position: absolute; /* لتحديد موقع الشعار */
+            left: 20px; /* المسافة من الحافة اليسرى */
+            top: 50%; /* محاذاة الشعار عمودياً */
+            transform: translateY(-50%); /* مركزية الشعار عمودياً */
+            width: 90px; /* حجم الصورة */
+            height: auto;
+        }
+        .welcome span {
+            display: inline-block;
+            margin-left: 150px; /* المسافة بين الشعار والنص */
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .content h1 {
+            color: #2e8b57;
+        }
+        .content p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        form {
+            margin-top: 20px;
+        }
+        form label {
+            display: block;
+            margin-top: 10px;
+        }
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        form button {
+            padding: 10px 20px;
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #255d42;
+        }
+    </style>
+</head>
+<body>
+    <!-- نص الترحيب -->
+    <div class="welcome">
+        <img src="IMG_6467.PNG" alt="لوجو شركة غرطانه"> <!-- إضافة صورة اللوجو -->
+        <span>مرحبا بكم في غرناطة – مستقبل جديد للزراعة المائية</span>
+    </div>
+    
+    <!-- رأس الصفحة -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">الصفحة الرئيسية</a></li>
+                <li><a href="profile.html">الملف الشخصي</a></li>
+                <li><a href="home.html">معلومات عن الشركة</a></li>
+                <li><a href="support.html">الدعم والاتصال</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- الدعم والاتصال -->
+    <section id="support" class="content">
+        <h1>الدعم والاتصال</h1>
+        <p>للمزيد من المعلومات، يمكنك التواصل معنا عبر البريد الإلكتروني أو من خلال الدردشة المباشرة.</p>
+        <form>
+            <label for="name">الاسم:</label><br>
+            <input type="text" id="name" name="name"><br>
+            <label for="email">البريد الإلكتروني:</label><br>
+            <input type="email" id="email" name="email"><br>
+            <label for="message">الرسالة:</label><br>
+            <textarea id="message" name="message"></textarea><br>
+            <button type="submit">إرسال</button>
+        </form>
+    </section>
+
+</body>
+</html>

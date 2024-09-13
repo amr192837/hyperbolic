@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الملف الشخصي - شركة غرناطة</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            direction: rtl;
+            text-align: right;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+        header {
+            background-color: #0f4c29;
+            padding: 20px;
+            color: white;
+            font-size: 24px;
+            position: relative;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        .welcome {
+            background-color: #e9f0eb;
+            color: #010d03;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-size: 30px;
+        }
+        .welcome img {
+            position: absolute; /* لتحديد موقع الشعار */
+            left: 20px; /* المسافة من الحافة اليسرى */
+            top: 9%; /* محاذاة الشعار عمودياً */
+            transform: translateY(-50%); /* مركزية الشعار عمودياً */
+            width: 90px; /* حجم الصورة */
+            height: auto;
+        }
+        .user-info {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: white;
+        }
+        .content {
+            margin-top: 20px;
+        }
+        .tower-form, .tower-details {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .tower-form label, .tower-details label {
+            display: block;
+            margin-top: 10px;
+        }
+        .tower-form input, .tower-form select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .tower-form button {
+            padding: 10px 20px;
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .tower-form button:hover {
+            background-color: #255d42;
+        }
+        .add-tower-button {
+            background-color: #2e8b57;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .add-tower-button:hover {
+            background-color: #255d42;
+        }
+        .tower-list {
+            margin-top: 20px;
+        }
+        .tower-item {
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 10px;
+            position: relative;
+        }
+        .tower-item button {
+            padding: 5px 10px;
+            margin: 5px;
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .tower-item button:hover {
+            background-color: #255d42;
+        }
+        .error-message {
+            color: red;
+            display: none;
+            text-align: center;
+        }
+        .tower-details {
+            display: none;
+            margin-top: 20px;
+        }
+        .tower-details .meter {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        .tower-details .meter label {
+            display: block;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .tower-details .meter .value {
+            background-color: #333;
+            color: #fff;
+            font-size: 24px;
+            text-align: center;
+            padding: 10px;
+            width: 100px;
+            border-radius: 5px;
+        }
+        .alerts {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #ffdddd;
+            color: #d8000c;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome">
+        <img src="IMG_6467.PNG" alt="لوجو شركة غرطانه"> <!-- إضافة صورة اللوجو -->
+        مرحبا بكم في غرناطة – مستقبل جديد للزراعة المائية
+
+    </div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">الصفحة الرئيسية</a></li>
+                <li><a href="profile.html">الملف الشخصي</a></li>
+                <li><a href="home.html">معلومات عن الشركة</a></li>
+                <li><a href="support.html">الدعم والاتصال</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="content">
+        <div class="add-tower">
+            <button class="add-tower-button" onclick="toggleTowerForm()">+ إضافة وحده</button>
+        </div>
+
+        <div id="tower-form" class="tower-form" style="display: none;">
+            <p class="error-message" id="error-message">برجاء إكمال باقي البيانات</p>
+            <label for="tower-name">اسم الوحده:</label>
+            <input type="text" id="tower-name">
+            
+            <label for="plant-type">نوع الزرع:</label>
+            <select id="plant-type">
+                <option value="">اختر نوع الزرع</option>
+                <option value="طماطم">طماطم</option>
+                <option value="طماطم شيري">طماطم شيري</option>
+                <option value="فراولة">فراولة</option>
+                <option value="بامية">بامية</option>
+                <option value="خس بتافيا">خس بتافيا </option>
+                <option value="خس كابوتشا">خس كابوتشا</option>
+                <option value="خس بلدي">خس بلدي</option>
+                <option value="كرفس">كرفس</option>
+                <option value="بروكلي">بروكلي</option>
+                <option value="فلفل حلو">فلفل حلو</option>
+                <option value="⁠فلفل أحمر">⁠فلفل أحمر</option>
+                <!-- Add more options as needed -->
+            </select>
+            
+            <label for="chip-code">كود الشيب:</label>
+            <input type="text" id="chip-code">
+            
+            <button type="button" onclick="submitTower()">تم</button>
+        </div>
+
+        <div id="tower-list" class="tower-list">
+            <!-- الأبراج ستضاف هنا -->
+        </div>
+
+        <div id="tower-details" class="tower-details">
+            <div class="meter">
+                <label>PH</label>
+                <div class="value" id="ph-meter">7.5</div>
+            </div>
+            <div class="meter">
+                <label>EC</label>
+                <div class="value" id="ec-meter">2.1</div>
+            </div>
+            <div class="meter">
+                <label>الحرارة</label>
+                <div class="value" id="temp-meter">25°C</div>
+            </div>
+        </div>
+
+        <div id="alerts" class="alerts" style="display: none;">
+            <p>تنبيه: درجة الحرارة زادت بنسبة 10٪ عن المعدل الطبيعي!</p>
+        </div>
+    </section>
+
+    <script>
+        var towers = [];
+        var activeDetailIndex = null;
+
+        function toggleTowerForm() {
+            var form = document.getElementById('tower-form');
+            form.style.display = (form.style.display === 'none' || form.style.display === '') ? 'block' : 'none';
+        }
+
+        function submitTower() {
+            var towerName = document.getElementById('tower-name').value;
+            var plantType = document.getElementById('plant-type').value;
+            var chipCode = document.getElementById('chip-code').value;
+            var errorMessage = document.getElementById('error-message');
+
+            if (towerName === '' || plantType === '' || chipCode === '') {
+                errorMessage.style.display = 'block';
+            } else {
+                errorMessage.style.display = 'none';
+                var tower = { name: towerName, plant: plantType, chip: chipCode };
+                towers.push(tower);
+                renderTowers();
+                resetForm();
+            }
+        }
+
+        function renderTowers() {
+            var towerList = document.getElementById('tower-list');
+            towerList.innerHTML = ''; // Clear the current list
+
+            towers.forEach(function(tower, index) {
+                var towerItem = document.createElement('div');
+                towerItem.className = 'tower-item';
+
+                var towerNameElement = document.createElement('div');
+                towerNameElement.textContent = tower.name;
+                towerItem.appendChild(towerNameElement);
+
+                var infoButton = document.createElement('button');
+                infoButton.textContent = 'معلومات الوحده';
+                infoButton.onclick = function() {
+                    toggleDetails(index);
+                };
+                towerItem.appendChild(infoButton);
+
+                // Add Edit Button
+                var editButton = document.createElement('button');
+                editButton.textContent = 'تعديل';
+                editButton.onclick = function() {
+                    editTower(index);
+                };
+                towerItem.appendChild(editButton);
+
+                // Add Delete Button
+                var deleteButton = document.createElement('button');
+                deleteButton.textContent = 'حذف';
+                deleteButton.onclick = function() {
+                    deleteTower(index);
+                };
+                towerItem.appendChild(deleteButton);
+
+                towerList.appendChild(towerItem);
+            });
+        }
+
+        function toggleDetails(index) {
+            var details = document.getElementById('tower-details');
+            var alerts = document.getElementById('alerts');
+            if (activeDetailIndex === index) {
+                details.style.display = 'none';
+                alerts.style.display = 'none';
+                activeDetailIndex = null;
+            } else {
+                activeDetailIndex = index;
+                var tower = towers[index];
+                document.getElementById('ph-meter').textContent = '7.5'; // Replace with actual data
+                document.getElementById('ec-meter').textContent = '2.1'; // Replace with actual data
+                document.getElementById('temp-meter').textContent = '25°C'; // Replace with actual data
+                details.style.display = 'block';
+                alerts.style.display = 'block'; // Show alerts based on data
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('tower-name').value = '';
+            document.getElementById('plant-type').value = '';
+            document.getElementById('chip-code').value = '';
+            toggleTowerForm();
+        }
+
+        function deleteTower(index) {
+            towers.splice(index, 1); // Remove the tower at the given index
+            renderTowers();
+        }
+
+        function editTower(index) {
+            var tower = towers[index];
+            document.getElementById('tower-name').value = tower.name;
+            document.getElementById('plant-type').value = tower.plant;
+            document.getElementById('chip-code').value = tower.chip;
+            deleteTower(index); // Remove the current tower and allow the user to submit the updated details
+            toggleTowerForm();
+        }
+    </script>
+</body>
+</html>
